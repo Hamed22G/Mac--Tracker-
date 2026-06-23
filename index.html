@@ -3,79 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>McDonald's Shift Tracker</title>
+  <title>Mac Tracker — Shift Dashboard</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="app">
-    <section class="hero">
+    <header class="top">
       <div>
-        <p class="badge">🍔 Work Dashboard</p>
-        <h1>McDonald's Shift Tracker</h1>
-        <p class="subtitle">Track your workdays, hours, salary estimate, and upcoming shifts.</p>
+        <p class="pill">🍔 McDonald's Work Tracker</p>
+        <h1>Shift Dashboard</h1>
+        <p class="muted">Calendar, hours, salary estimate, reminders and monthly stats.</p>
       </div>
-      <button class="clear-btn" onclick="clearAll()">Reset</button>
+      <button onclick="requestNotifications()" class="ghost">🔔 Enable reminders</button>
+    </header>
+
+    <section class="cards">
+      <div class="card"><span>This month</span><strong id="monthHours">0h</strong></div>
+      <div class="card"><span>Salary estimate</span><strong id="monthSalary">€0</strong></div>
+      <div class="card"><span>Total shifts</span><strong id="totalShifts">0</strong></div>
+      <div class="card active"><span>Next shift</span><strong id="nextShift">None</strong></div>
     </section>
 
-    <section class="stats">
-      <article class="stat-card">
-        <p>Total Hours</p>
-        <h2 id="totalHours">0</h2>
-      </article>
-      <article class="stat-card">
-        <p>Estimated Salary</p>
-        <h2 id="salary">€0</h2>
-      </article>
-      <article class="stat-card">
-        <p>Total Shifts</p>
-        <h2 id="totalShifts">0</h2>
-      </article>
-      <article class="stat-card highlight">
-        <p>Next Shift</p>
-        <h2 id="nextShift">None</h2>
-      </article>
+    <section class="grid">
+      <div class="panel">
+        <h2>Add shift</h2>
+        <div class="form">
+          <label>Date <input type="date" id="date"></label>
+          <label>Start <input type="time" id="start"></label>
+          <label>End <input type="time" id="end"></label>
+          <label>Place/position <input id="position" placeholder="MPS, KAS, DRA..."></label>
+        </div>
+        <button class="primary" onclick="addShift()">Add shift</button>
+      </div>
+
+      <div class="panel">
+        <h2>Quick import from email text</h2>
+        <p class="muted small">Paste the McDonald's planning text here. Example: Friday 17 July 20:30 - 02:30</p>
+        <textarea id="importText" placeholder="Paste schedule email text here..."></textarea>
+        <button class="primary" onclick="importText()">Import shifts</button>
+      </div>
+    </section>
+
+    <section class="panel calendar-panel">
+      <div class="calendar-head">
+        <button class="ghost" onclick="changeMonth(-1)">←</button>
+        <h2 id="calendarTitle"></h2>
+        <button class="ghost" onclick="changeMonth(1)">→</button>
+      </div>
+      <div class="weekdays">
+        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+      </div>
+      <div id="calendar" class="calendar"></div>
     </section>
 
     <section class="panel">
-      <h2>Add a Shift</h2>
-      <div class="form-grid">
-        <label>Date
-          <input type="date" id="date" />
-        </label>
-        <label>Start time
-          <input type="time" id="start" />
-        </label>
-        <label>End time
-          <input type="time" id="end" />
-        </label>
-        <label>Position / Place
-          <input type="text" id="position" placeholder="MPS, DRA, KAS..." />
-        </label>
+      <div class="calendar-head">
+        <h2>All shifts</h2>
+        <button onclick="clearAll()" class="danger">Reset all</button>
       </div>
-      <button class="main-btn" onclick="addShift()">Add Shift</button>
-    </section>
-
-    <section class="panel">
-      <div class="panel-top">
-        <h2>Your Shifts</h2>
-        <p id="monthTotal">This month: 0 hours</p>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Day</th>
-              <th>Start</th>
-              <th>End</th>
-              <th>Position</th>
-              <th>Hours</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="shiftTable"></tbody>
-        </table>
-      </div>
+      <div id="shiftList" class="shift-list"></div>
     </section>
   </main>
 
