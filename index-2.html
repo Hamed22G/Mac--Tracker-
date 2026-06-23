@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mac Tracker | Made by Hamed</title>
+  <meta name="theme-color" content="#111111" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#050505;--bg2:#0f0f12;--card:rgba(255,255,255,.08);--card2:rgba(255,255,255,.12);
+      --text:#fff7e8;--muted:#b7aa98;--gold:#ffcc00;--gold2:#ffe27a;--red:#ff2735;--green:#26e27a;
+      --line:rgba(255,255,255,.13);--shadow:0 30px 90px rgba(0,0,0,.55);--radius:28px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:#050505;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;z-index:-3;background:
+      radial-gradient(circle at 8% 8%,rgba(255,204,0,.35),transparent 26%),
+      radial-gradient(circle at 88% 3%,rgba(255,39,53,.25),transparent 30%),
+      radial-gradient(circle at 50% 100%,rgba(255,204,0,.18),transparent 40%),
+      linear-gradient(135deg,#040404,#121216 55%,#060606)}
+    body:after{content:"";position:fixed;inset:0;z-index:-2;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:46px 46px;mask-image:radial-gradient(circle at center,#000,transparent 78%)}
+    .orb{position:fixed;border-radius:999px;filter:blur(18px);opacity:.55;z-index:-1;animation:float 8s ease-in-out infinite alternate}.orb.one{width:260px;height:260px;background:rgba(255,204,0,.28);left:-80px;top:120px}.orb.two{width:220px;height:220px;background:rgba(255,39,53,.23);right:-60px;top:260px;animation-delay:1.5s}.orb.three{width:180px;height:180px;background:rgba(38,226,122,.13);left:55%;bottom:-70px;animation-delay:.6s}@keyframes float{to{transform:translateY(-35px) translateX(20px) scale(1.08)}}
+    .wrap{max-width:1180px;margin:auto;padding:20px}.glass{background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.045));border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
+    header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:8px 0 18px}.brand{display:flex;align-items:center;gap:14px}.logo{width:58px;height:58px;border-radius:22px;display:grid;place-items:center;font-size:30px;background:linear-gradient(135deg,var(--gold),var(--red));box-shadow:0 18px 45px rgba(255,204,0,.24);position:relative}.logo:after{content:"";position:absolute;inset:7px;border:1px solid rgba(255,255,255,.34);border-radius:17px}h1{margin:0;font-size:clamp(28px,4.5vw,58px);letter-spacing:-2px;line-height:.95}.sub{color:var(--muted);font-size:14px;margin-top:6px}.made{border:1px solid rgba(255,204,0,.34);background:rgba(255,204,0,.10);color:var(--gold2);padding:11px 15px;border-radius:999px;font-weight:900;white-space:nowrap;box-shadow:0 12px 35px rgba(255,204,0,.12)}
+    .hero{border-radius:34px;padding:22px;margin-bottom:18px;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;right:-70px;top:-90px;width:300px;height:300px;background:radial-gradient(circle,rgba(255,204,0,.32),transparent 65%)}.heroTop{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch}.titleCard{padding:22px;position:relative;z-index:1}.badge{display:inline-flex;align-items:center;gap:8px;color:#16110a;background:linear-gradient(135deg,var(--gold),var(--gold2));font-weight:950;border-radius:999px;padding:9px 12px;font-size:12px;text-transform:uppercase;letter-spacing:.7px}.hero h2{font-size:clamp(34px,6vw,72px);line-height:.91;letter-spacing:-3px;margin:18px 0 12px}.hero p{margin:0;color:var(--muted);line-height:1.6;max-width:620px}.miniPanel{padding:20px;border-radius:28px;background:linear-gradient(160deg,rgba(255,204,0,.14),rgba(255,39,53,.10),rgba(255,255,255,.04));border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;min-height:260px}.bigTime{font-size:44px;font-weight:950;letter-spacing:-2px}.progress{height:12px;border-radius:999px;background:rgba(255,255,255,.10);overflow:hidden;margin-top:10px}.bar{height:100%;width:0%;background:linear-gradient(90deg,var(--gold),var(--red));border-radius:999px;transition:.6s}.quote{color:var(--muted);font-weight:700;margin-top:10px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}.stat{padding:18px;border-radius:24px;background:rgba(255,255,255,.07);border:1px solid var(--line);position:relative;overflow:hidden}.stat:after{content:"";position:absolute;inset:auto -25px -55px auto;width:110px;height:110px;border-radius:999px;background:rgba(255,204,0,.12)}.stat span{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.8px;font-weight:950}.stat b{display:block;font-size:clamp(26px,4vw,40px);margin-top:8px;letter-spacing:-1px}.stat small{color:var(--muted)}
+    .layout{display:grid;grid-template-columns:.92fr 1.08fr;gap:18px}.card{border-radius:30px;padding:20px}.card h3{margin:0 0 14px;font-size:22px;letter-spacing:-.5px}.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}label{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.8px}input,textarea{width:100%;margin-top:7px;border:1px solid var(--line);background:rgba(5,5,5,.55);color:var(--text);border-radius:18px;padding:14px 14px;font-size:15px;outline:none;transition:.2s}input:focus,textarea:focus{border-color:rgba(255,204,0,.7);box-shadow:0 0 0 4px rgba(255,204,0,.09)}textarea{resize:vertical}.full{grid-column:1/-1}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}button{border:0;border-radius:18px;padding:14px 17px;font-weight:950;cursor:pointer;color:#171000;background:linear-gradient(135deg,var(--gold),var(--gold2));box-shadow:0 18px 34px rgba(255,204,0,.18);transition:.2s}button:hover{transform:translateY(-2px);filter:brightness(1.04)}button.secondary{background:rgba(255,255,255,.10);color:var(--text);border:1px solid var(--line);box-shadow:none}button.danger{background:linear-gradient(135deg,#ff5660,#b80011);color:#fff}.helper{font-size:13px;color:var(--muted);line-height:1.5;margin-top:-4px}.toolbar{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:18px 0 12px}.search{max-width:260px}.shift{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;background:linear-gradient(135deg,rgba(255,255,255,.105),rgba(255,255,255,.045));border:1px solid var(--line);border-radius:24px;padding:15px;margin-bottom:11px;position:relative;overflow:hidden}.shift:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(var(--gold),var(--red))}.shift strong{font-size:16px}.shift small{color:var(--muted);display:block;margin-top:5px}.pill{display:inline-flex;gap:5px;align-items:center;margin-top:9px;margin-right:6px;border-radius:999px;padding:6px 10px;background:rgba(255,204,0,.12);color:var(--gold2);font-size:12px;font-weight:950}.empty{text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:24px;padding:32px;background:rgba(255,255,255,.035)}.footer{text-align:center;color:var(--muted);padding:28px}.footer b{color:var(--gold2)}
+    .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(120px);background:rgba(20,20,20,.9);border:1px solid var(--line);color:var(--text);padding:13px 16px;border-radius:999px;box-shadow:var(--shadow);z-index:99;transition:.35s}.toast.show{transform:translateX(-50%) translateY(0)}
+    @media(max-width:900px){.heroTop,.layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}header{align-items:flex-start}.made{font-size:13px}.miniPanel{min-height:190px}}
+    @media(max-width:560px){.wrap{padding:14px}.hero,.card{border-radius:24px;padding:16px}.form{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr;gap:10px}.stat{padding:14px}header{flex-direction:column}.hero h2{letter-spacing:-2px}.bigTime{font-size:34px}.toolbar{display:block}.search{max-width:none}.shift{grid-template-columns:1fr}.shift button{width:100%}}
+  </style>
+</head>
+<body>
+  <div class="orb one"></div><div class="orb two"></div><div class="orb three"></div>
+  <div class="wrap">
+    <header>
+      <div class="brand"><div class="logo">🍟</div><div><h1>Mac Tracker</h1><div class="sub">Shift planner • pauze calculator • salaris overzicht</div></div></div>
+      <div class="made">✨ Made by Hamed</div>
+    </header>
+
+    <section class="hero glass">
+      <div class="heroTop">
+        <div class="titleCard">
+          <div class="badge">Live work dashboard</div>
+          <h2>Track je shifts als een pro.</h2>
+          <p>Voeg diensten toe, importeer je rooster tekst en zie direct je uren, pauze, verdiende geld en volgende shift. Alles blijft opgeslagen op je telefoon/browser.</p>
+        </div>
+        <div class="miniPanel">
+          <div>
+            <div class="sub">Vandaag</div>
+            <div class="bigTime" id="clock">00:00</div>
+            <div class="quote" id="todayLine">Klaar voor je volgende shift?</div>
+          </div>
+          <div>
+            <div class="sub">Maand progress</div>
+            <div class="progress"><div class="bar" id="monthBar"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><span>Deze week</span><b id="weekHours">0h</b><small id="weekCount">0 diensten</small></div>
+        <div class="stat"><span>Deze maand</span><b id="monthHours">0h</b><small id="monthCount">0 diensten</small></div>
+        <div class="stat"><span>Verdiend</span><b id="earned">€0</b><small>deze maand</small></div>
+        <div class="stat"><span>Aankomend</span><b id="nextShift">–</b><small id="nextInfo">niets gepland</small></div>
+      </div>
+    </section>
+
+    <main class="layout">
+      <section class="card glass">
+        <h3>Nieuwe dienst</h3>
+        <div class="form">
+          <div><label>Datum</label><input id="date" type="date"></div>
+          <div><label>Positie</label><input id="position" placeholder="MPS, Kitchen, Counter..."></div>
+          <div><label>Start</label><input id="start" type="time"></div>
+          <div><label>Einde</label><input id="end" type="time"></div>
+          <div><label>Pauze minuten</label><input id="break" type="number" min="0" step="5" value="30"></div>
+          <div><label>Uurloon €</label><input id="rate" type="number" min="0" step="0.01" value="12.41"></div>
+          <div class="full"><label>Notitie</label><input id="note" placeholder="Bijv. close, training, extra shift"></div>
+        </div>
+        <div class="actions">
+          <button onclick="addShift()">+ Dienst toevoegen</button>
+          <button class="secondary" onclick="fillDemo()">Demo</button>
+          <button class="secondary" onclick="exportData()">Backup</button>
+          <button class="danger" onclick="clearAll()">Wissen</button>
+        </div>
+      </section>
+
+      <section class="card glass">
+        <h3>Import tekst / Gmail</h3>
+        <p class="helper">Plak één of meerdere regels. Voorbeeld: <b>vrijdag 17 juli 2026 20:30 - 02:30, MPS</b>. Import gebruikt automatisch 30 min pauze.</p>
+        <textarea id="importText" rows="4" placeholder="Plak hier je rooster tekst..."></textarea>
+        <div class="actions"><button onclick="importShifts()">Importeer shifts</button></div>
+        <div class="toolbar"><h3 style="margin:0">Diensten</h3><input class="search" id="search" placeholder="Zoek positie/notitie..." oninput="render()"></div>
+        <div id="list"></div>
+      </section>
+    </main>
+    <div class="footer">🍔 Mac Tracker — <b>Made by Hamed</b></div>
+  </div>
+  <div class="toast" id="toast">Opgeslagen</div>
+<script>
+const KEY='macTrackerShifts_wow_v1';
+let shifts=JSON.parse(localStorage.getItem(KEY)||'[]');
+const nlMonths={januari:0,februari:1,maart:2,april:3,mei:4,juni:5,juli:6,augustus:7,september:8,oktober:9,november:10,december:11};
+function $(id){return document.getElementById(id)}
+function save(msg='Opgeslagen'){localStorage.setItem(KEY,JSON.stringify(shifts));render();showToast(msg)}
+function showToast(msg){toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800)}
+function pad(n){return String(n).padStart(2,'0')}
+function fmtDate(d){return new Date(d+'T12:00:00').toLocaleDateString('nl-NL',{weekday:'short',day:'numeric',month:'short'})}
+function minutesBetween(date,start,end,brk=0){if(!date||!start||!end)return 0;let s=new Date(`${date}T${start}`),e=new Date(`${date}T${end}`);if(e<=s)e.setDate(e.getDate()+1);return Math.max(0,((e-s)/60000)-Number(brk||0))}
+function hoursText(mins){return (Math.round((mins/60)*10)/10)+'h'}
+function money(v){return '€'+Math.round(v)}
+function addShift(){const shift={id:Date.now()+Math.random(),date:$('date').value,start:$('start').value,end:$('end').value,break:Number($('break').value||0),position:$('position').value.trim()||'Shift',rate:Number($('rate').value||0),note:$('note').value.trim()};if(!shift.date||!shift.start||!shift.end){showToast('Vul datum, start en einde in');return}shifts.push(shift);shifts.sort((a,b)=>new Date(a.date)-new Date(b.date));$('position').value='';$('note').value='';save('Dienst toegevoegd')}
+function del(id){shifts=shifts.filter(s=>s.id!==id);save('Dienst verwijderd')}
+function clearAll(){if(confirm('Alles wissen?')){shifts=[];save('Alles gewist')}}
+function getWeekNumber(d){d=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));d.setUTCDate(d.getUTCDate()+4-(d.getUTCDay()||7));let y=new Date(Date.UTC(d.getUTCFullYear(),0,1));return Math.ceil((((d-y)/86400000)+1)/7)}
+function render(){const now=new Date(),thisMonth=now.getMonth(),thisYear=now.getFullYear(),thisWeek=getWeekNumber(now);let weekM=0,monthM=0,weekC=0,monthC=0,earned=0,next=null;const q=($('search')?.value||'').toLowerCase();$('list').innerHTML='';shifts.forEach(s=>{const d=new Date(s.date+'T12:00:00'),mins=minutesBetween(s.date,s.start,s.end,s.break);if(d.getFullYear()===thisYear&&getWeekNumber(d)===thisWeek){weekM+=mins;weekC++}if(d.getFullYear()===thisYear&&d.getMonth()===thisMonth){monthM+=mins;monthC++;earned+=(mins/60)*Number(s.rate||0)}if(new Date(`${s.date}T${s.start}`)>=now&&(!next||new Date(`${s.date}T${s.start}`)<new Date(`${next.date}T${next.start}`)))next=s});weekHours.textContent=hoursText(weekM);weekCount.textContent=weekC+' diensten';monthHours.textContent=hoursText(monthM);monthCount.textContent=monthC+' diensten';earned.textContent=money(earned);monthBar.style.width=Math.min(100,(monthM/(120*60))*100)+'%';if(next){nextShift.textContent=fmtDate(next.date);nextInfo.textContent=next.start+' - '+next.end}else{nextShift.textContent='–';nextInfo.textContent='niets gepland'}const filtered=shifts.filter(s=>(s.position+' '+(s.note||'')).toLowerCase().includes(q));if(!filtered.length){$('list').innerHTML='<div class="empty">Nog geen diensten gevonden.</div>';return}filtered.slice().reverse().forEach(s=>{const mins=minutesBetween(s.date,s.start,s.end,s.break);const div=document.createElement('div');div.className='shift';div.innerHTML=`<div><strong>${fmtDate(s.date)} · ${s.start} - ${s.end}</strong><small>${s.position}${s.note?' · '+s.note:''}</small><span class="pill">⏱ ${hoursText(mins)}</span><span class="pill">☕ pauze ${s.break||0} min</span><span class="pill">💸 ${money((mins/60)*Number(s.rate||0))}</span></div><button class="secondary" onclick="del(${s.id})">Delete</button>`;$('list').appendChild(div)})}
+function parseDutchDate(txt){txt=txt.toLowerCase().replace(/,/g,' ');const m=txt.match(/(\d{1,2})\s+(januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)\s+(20\d{2})/i);if(!m)return null;return `${m[3]}-${pad(nlMonths[m[2]]+1)}-${pad(m[1])}`}
+function importShifts(){const lines=$('importText').value.split(/\n+/).map(x=>x.trim()).filter(Boolean);let added=0;lines.forEach(line=>{const d=parseDutchDate(line),t=line.match(/(\d{1,2}:\d{2})\s*-\s*(\d{1,2}:\d{2})/);if(d&&t){let after=line.split(t[0])[1]||'';let pos=after.replace(/^[,\s-]+/,'').trim()||'Imported shift';shifts.push({id:Date.now()+Math.random(),date:d,start:t[1],end:t[2],break:30,position:pos,rate:Number($('rate').value||12.41),note:'Imported'});added++}});if(!added){showToast('Geen shifts gevonden');alert('Geen shifts gevonden. Probeer: vrijdag 17 juli 2026 20:30 - 02:30, MPS');return}$('importText').value='';shifts.sort((a,b)=>new Date(a.date)-new Date(b.date));save(added+' shift(s) geïmporteerd')}
+function exportData(){const blob=new Blob([JSON.stringify(shifts,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='mac-tracker-backup.json';a.click();URL.revokeObjectURL(a.href);showToast('Backup gedownload')}
+function fillDemo(){const today=new Date();const d=`${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;$('date').value=d;$('start').value='17:30';$('end').value='01:30';$('break').value='30';$('position').value='MPS Close';$('note').value='Demo shift'}
+function tick(){const n=new Date();clock.textContent=n.toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit'});todayLine.textContent=n.getHours()<12?'Goedemorgen, Hamed ☀️':n.getHours()<18?'Ready voor vandaag ⚡':'Avond shift mode 🌙'}
+(function init(){const t=new Date();$('date').value=`${t.getFullYear()}-${pad(t.getMonth()+1)}-${pad(t.getDate())}`;tick();setInterval(tick,1000);render()})();
+</script>
+</body>
+</html>
